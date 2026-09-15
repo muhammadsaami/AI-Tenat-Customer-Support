@@ -2,6 +2,15 @@
 
 A multi-tenant AI-powered customer support platform built with FastAPI.
 
+![SupportPilot Overview](screenshots/overview.png)
+
+## Features
+
+- Upload documents and get AI-powered, grounded answers from your knowledge base
+- Every response cites the exact document chunks it was built from
+- Multi-tenant architecture with isolated data per workspace
+- Real-time document indexing and semantic search
+
 ## Phase 1: Project Scaffolding
 
 This phase establishes the project structure, dependencies, and local development environment.
@@ -16,56 +25,43 @@ This phase establishes the project structure, dependencies, and local developmen
 
 1. **Create and activate virtual environment:**
 
-   ```bash
+```bash
    python -m venv venv
    ./venv/Scripts/Activate.ps1      # Windows PowerShell
    source venv/bin/activate          # macOS/Linux
-   ```
+```
 
 2. **Install dependencies:**
 
-   ```bash
+```bash
    pip install -r requirements.txt
-   ```
+```
 
 3. **Set up environment variables:**
 
-   ```bash
+```bash
    cp .env.example .env
    # Edit .env with your real values
-   ```
+```
 
 4. **Start infrastructure services:**
 
-   ```bash
+```bash
    docker-compose up -d
-   ```
+```
 
 5. **Run the application:**
 
-   ```bash
+```bash
    uvicorn app.main:app --reload --port 8000
-   ```
+```
+
+6. **Run the frontend:**
+
+```bash
+   cd frontend
+   npm install
+   npm run dev
+```
 
 ## Project Structure
-
-```
-SupportPilot/
-├── app/
-│   ├── routers/        # API route handlers
-│   └── services/       # Business logic layer
-├── requirements.txt
-├── .env.example
-├── docker-compose.yml
-└── README.md
-```
-
-## Architecture
-
-- **Framework:** FastAPI (async)
-- **Database:** PostgreSQL 16 via SQLAlchemy 2.0 (async)
-- **Cache:** Redis 7
-- **AI:** OpenAI API
-- **Auth:** JWT + bcrypt
-- **Migrations:** Alembic
-- **Multi-tenancy:** Tenant isolation via header + DB row-level security
